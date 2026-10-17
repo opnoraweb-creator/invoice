@@ -1,27 +1,92 @@
-/* Print nikalte waqt background gray se white ho jayega aur buttons chup jayenge */
-body {
-    background: white;
-    color: black;
+@page {
+    size: auto;
+    margin: 12mm;
 }
 
-.no-print {
+/* Print par white background aur black text */
+* {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0 !important;
+    font-size: 12pt;
+}
+
+/* Header navigation, settings, buttons aur footer print nahi honge */
+.no-print,
+.settings-panel,
+.management-actions,
+.site-footer {
     display: none !important;
 }
 
+/* Invoice ko page ki poori printable width dein */
 .invoice-container {
-    box-shadow: none !important;
+    max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    max-width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #000 !important;
 }
 
+/* Editable fields normal text ki tarah print hon */
 [contenteditable="true"] {
     border-bottom: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    outline: none !important;
+}
+
+/* Invoice heading aur details ko saath rakhein */
+.invoice-header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Items table */
+.table-wrap {
+    overflow: visible !important;
+}
+
+.invoice-table {
+    width: 100% !important;
+    margin-top: 12px !important;
+    border-collapse: collapse !important;
+}
+
+.invoice-table th,
+.invoice-table td {
+    border: 1px solid #777 !important;
+    color: #000 !important;
+    padding: 7px !important;
 }
 
 .invoice-table th {
-    background-color: #eee !important;
-    color: black !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    background: #eee !important;
+}
+
+/* Totals */
+.calculation-box {
+    background: #fff !important;
+    border: 1px solid #aaa !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Save status print nahi hoga */
+.save-status {
+    display: none !important;
+}
+
+/* Printed links normal black text hon */
+a {
+    color: #000 !important;
+    text-decoration: none !important;
 }
