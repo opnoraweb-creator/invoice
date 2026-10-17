@@ -1,142 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="bPEjfgHOBgE4gz5OTjrElzAQfG_LMnQdu83eMcIEbHk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free GST Invoice Generator | Create Online Invoice Free - Opnora</title>
-    <meta name="description" content="Create professional GST invoices online for free with Free Invoice by Opnora. Fast, secure and printable invoice generator for businesses.">
-    <meta name="keywords" content="free invoice generator, GST invoice, online invoice maker, invoice generator, invoice PDF, Opnora">
-<meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2c3e50">
+
+    <meta name="google-site-verification" content="bPEjfgHOBgE4gz5OTjrElzAQfG_LMnQdu83eMcIEbHk">
+
+    <title>Free GST Invoice Generator | Opnora</title>
+    <meta name="description" content="Create, save and print professional invoices online for free with Opnora.">
+    <meta name="keywords" content="free invoice generator, GST invoice, online invoice maker, invoice PDF, Opnora">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://freeinvoice.opnora.com/">
-    
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/print.css" media="print">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Free Invoice Generator",
-  "url": "https://freeinvoice.opnora.com/",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web Browser",
-  "browserRequirements": "Requires JavaScript",
-  "description": "Free GST Invoice Generator by Opnora. Create professional GST invoices online for free and print or download instantly.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "INR"
-  },
-  "creator": {
-    "@type": "Organization",
-    "name": "Opnora",
-    "url": "https://opnora.com"
-  }
-}
-</script>
-    <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"Opnora",
-  "url":"https://opnora.com",
-  "logo":"https://opnora.com/logo.png",
-  "sameAs":[
-    "https://freeinvoice.opnora.com"
-  ]
-}
-</script>
 </head>
-<body>
-    <header class="no-print">
-        <div class="logo">?? FreeInvoice</div>
-      <nav>
-    <a href="index.html" class="active">Invoice</a>
-    <a href="about.html">About</a>
-    <a href="contact-us.html">Contact</a>
-</nav>
-    </header>
 
-    <div class="invoice-container">
-        <!-- Invoice Header -->
+<body>
+<header class="no-print">
+    <div class="logo">FreeInvoice</div>
+    <nav>
+        <a href="index.html" class="active">Invoice</a>
+        <a href="about.html">About</a>
+        <a href="contact-us.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section class="settings-panel no-print">
+        <div class="setting-field">
+            <label for="currencySelect">Currency</label>
+            <select id="currencySelect">
+                <option value="INR" data-symbol="₹" selected>INR — ₹ Indian Rupee</option>
+                <option value="USD" data-symbol="$">USD — $ US Dollar</option>
+                <option value="GBP" data-symbol="£">GBP — £ British Pound</option>
+                <option value="EUR" data-symbol="€">EUR — € Euro</option>
+                <option value="CAD" data-symbol="CA$">CAD — CA$ Canadian Dollar</option>
+                <option value="AUD" data-symbol="A$">AUD — A$ Australian Dollar</option>
+                <option value="JPY" data-symbol="¥">JPY — ¥ Japanese Yen</option>
+            </select>
+        </div>
+
+        <div class="setting-field">
+            <label for="taxType">Tax Type</label>
+            <select id="taxType">
+                <option value="GST" data-default-rate="18" selected>GST</option>
+                <option value="VAT" data-default-rate="20">VAT</option>
+                <option value="Sales Tax" data-default-rate="8">Sales Tax</option>
+                <option value="Other Tax" data-default-rate="10">Other Tax</option>
+                <option value="No Tax" data-default-rate="0">No Tax</option>
+            </select>
+        </div>
+
+        <div class="setting-field">
+            <label for="taxRate">Tax Rate (%)</label>
+            <input id="taxRate" type="number" min="0" max="100" step="0.01" value="18">
+        </div>
+
+        <p class="settings-note">
+            Tax rates are examples. Set the correct rate for your transaction.
+        </p>
+    </section>
+
+    <div class="invoice-container" id="invoiceDocument">
         <div class="invoice-header">
             <div class="shop-details">
-                <h1 id="shopName" contenteditable="true">Aapki Shop Ka Naam</h1>
-                <p id="shopAddress" contenteditable="true">RIICO Industrial Area, Pali, Rajasthan</p>
-                <p id="shopContact" contenteditable="true">Mobile: +91 9999999999</p>
+                <h1 id="shopName" contenteditable="true" spellcheck="false">Aapki Shop Ka Naam</h1>
+                <p id="shopAddress" contenteditable="true" spellcheck="false">RIICO Industrial Area, Pali, Rajasthan</p>
+                <p id="shopContact" contenteditable="true" spellcheck="false">Mobile: +91 9999999999</p>
             </div>
+
             <div class="bill-details">
                 <h2>INVOICE</h2>
                 <p><strong>Date:</strong> <span id="currentDate"></span></p>
-                <p><strong>Invoice No:</strong> <span contenteditable="true">#101</span></p>
+                <p><strong>Invoice No:</strong>
+                    <span id="invoiceNumber" contenteditable="true" spellcheck="false">#101</span>
+                </p>
             </div>
         </div>
 
         <hr>
 
-        <!-- Customer Details -->
-        <div class="customer-section">
+        <section class="customer-section">
             <h3>Bill To:</h3>
-            <p><strong>Name:</strong> <span contenteditable="true" class="placeholder-text">Customer Name</span></p>
-            <p><strong>Contact:</strong> <span contenteditable="true" class="placeholder-text">Mobile No.</span></p>
+            <p><strong>Name:</strong>
+                <span id="customerName" contenteditable="true" class="placeholder-text" spellcheck="false">Customer Name</span>
+            </p>
+            <p><strong>Contact:</strong>
+                <span id="customerContact" contenteditable="true" class="placeholder-text" spellcheck="false">Mobile No.</span>
+            </p>
+        </section>
+
+        <div class="table-wrap">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Item Description</th>
+                        <th>Qty</th>
+                        <th>Rate (<span class="currency-symbol">₹</span>)</th>
+                        <th>Total (<span class="currency-symbol">₹</span>)</th>
+                        <th class="no-print">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="invoiceItems"></tbody>
+            </table>
         </div>
 
-        <!-- Items Table -->
-        <table class="invoice-table">
-            <thead>
-                <tr>
-                    <th>Item Description</th>
-                    <th>Qty</th>
-                    <th>Rate (?)</th>
-                    <th>Total (?)</th>
-                    <th class="no-print">Action</th>
-                </tr>
-            </thead>
-            <tbody id="invoiceItems">
-                <!-- Items dynamically added here -->
-            </tbody>
-        </table>
+        <div class="invoice-actions no-print">
+            <button type="button" class="btn btn-add" id="addItemBtn">+ Add Item</button>
+        </div>
 
-        <!-- Add Item Button -->
-        <button class="btn btn-add no-print" onclick="addNewRow()">+ Add Item</button>
-
-        <!-- Dynamic Calculation Section -->
-        <div class="calculation-box">
+        <section class="calculation-box">
             <div class="calc-row">
-                <span>Sub Total (???? ?????):</span>
-                <span>?<span id="subTotal">0.00</span></span>
+                <span>Subtotal</span>
+                <span><span class="currency-symbol">₹</span><span id="subTotal">0.00</span></span>
             </div>
-            <div class="calc-row gst-row">
-                <span>GST Tax (<span id="gstPercentage" contenteditable="true" oninput="calculateGrandTotal()">18</span>%):</span>
-                <span>?<span id="gstAmount">0.00</span></span>
-            </div>
-            <hr>
-            <div class="calc-row grand-total-row">
-                <h3>Grand Total (Net Amount):</h3>
-                <h3>?<span id="grandTotal">0.00</span></h3>
-            </div>
-        </div>
 
-        <!-- Print Action Button -->
+            <div class="calc-row gst-row">
+                <span><span id="taxLabel">GST</span> (<span id="taxRateDisplay">18</span>%)</span>
+                <span><span class="currency-symbol">₹</span><span id="taxAmount">0.00</span></span>
+            </div>
+
+            <hr>
+
+            <div class="calc-row grand-total-row">
+                <h3>Grand Total</h3>
+                <h3><span class="currency-symbol">₹</span><span id="grandTotal">0.00</span></h3>
+            </div>
+        </section>
+
+        <p class="save-status" id="saveStatus" role="status">
+            Invoice will be saved in this browser.
+        </p>
+
         <div class="print-actions no-print">
-            <button class="btn btn-print" onclick="window.print()">Print Invoice ???</button>
+            <button type="button" class="btn btn-print" id="printBtn">Print Invoice</button>
         </div>
     </div>
+
+    <section class="management-actions no-print">
+        <button type="button" class="btn btn-secondary" id="newInvoiceBtn">New Invoice</button>
+        <button type="button" class="btn btn-danger" id="clearInvoiceBtn">Clear Invoice</button>
+        <p class="storage-note">
+            Invoices are saved in this browser on this device. Clearing browser data may remove them.
+        </p>
+    </section>
+</main>
+
 <footer class="site-footer">
     <p>© 2026 <strong>Opnora</strong>. All Rights Reserved.</p>
 
     <div class="footer-links">
         <a href="about.html">About</a> |
         <a href="privacy-policy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms & Conditions</a> |
+        <a href="terms.html">Terms &amp; Conditions</a> |
         <a href="contact-us.html">Contact Us</a>
     </div>
 
-    <p style="margin-top:10px;">
+    <p class="powered-by">
         Powered by
-        <a href="https://opnora.com" target="_blank">Opnora.com</a>
+        <a href="https://opnora.com" target="_blank" rel="noopener noreferrer">Opnora.com</a>
     </p>
 </footer>
-    <script src="js/main.js"></script>
+
+<script src="js/main.js"></script>
 </body>
 </html>
