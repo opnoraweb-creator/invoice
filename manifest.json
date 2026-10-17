@@ -1,0 +1,12 @@
+{
+  "name": "Smart Invoice AI Automator",
+  "description": "Helps prepare invoices on the Smart Invoice website using details provided by the user.",
+  "version": "1.0.0",
+  "author": "opnoraweb-creator",
+  "homepage": "https://free-smart-invoice.opnora.com/",
+  "skill_file": "https://raw.githubusercontent.com/opnoraweb-creator/invoice/main/skill.md",
+  "capabilities": [
+    "browser_automation",
+    "form_filling"
+  ]
+}
