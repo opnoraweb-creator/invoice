@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="bPEjfgHOBgE4gz5OTjrElzAQfG_LMnQdu83eMcIEbHk" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free GST Invoice Generator | Create Online Invoice Free - Opnora</title>
+    <meta name="description" content="Create professional GST invoices online for free with Free Invoice by Opnora. Fast, secure and printable invoice generator for businesses.">
+    <meta name="keywords" content="free invoice generator, GST invoice, online invoice maker, invoice generator, invoice PDF, Opnora">
+<meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://freeinvoice.opnora.com/">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free Invoice Generator",
+  "url": "https://freeinvoice.opnora.com/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web Browser",
+  "browserRequirements": "Requires JavaScript",
+  "description": "Free GST Invoice Generator by Opnora. Create professional GST invoices online for free and print or download instantly.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Opnora",
+    "url": "https://opnora.com"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Opnora",
+  "url":"https://opnora.com",
+  "logo":"https://opnora.com/logo.png",
+  "sameAs":[
+    "https://freeinvoice.opnora.com"
+  ]
+}
+</script>
+</head>
+<body>
+    <header class="no-print">
+        <div class="logo">?? FreeInvoice</div>
+      <nav>
+    <a href="index.html" class="active">Invoice</a>
+    <a href="about.html">About</a>
+    <a href="contact-us.html">Contact</a>
+</nav>
+    </header>
+
+    <div class="invoice-container">
+        <!-- Invoice Header -->
+        <div class="invoice-header">
+            <div class="shop-details">
+                <h1 id="shopName" contenteditable="true">Aapki Shop Ka Naam</h1>
+                <p id="shopAddress" contenteditable="true">RIICO Industrial Area, Pali, Rajasthan</p>
+                <p id="shopContact" contenteditable="true">Mobile: +91 9999999999</p>
+            </div>
+            <div class="bill-details">
+                <h2>INVOICE</h2>
+                <p><strong>Date:</strong> <span id="currentDate"></span></p>
+                <p><strong>Invoice No:</strong> <span contenteditable="true">#101</span></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Customer Details -->
+        <div class="customer-section">
+            <h3>Bill To:</h3>
+            <p><strong>Name:</strong> <span contenteditable="true" class="placeholder-text">Customer Name</span></p>
+            <p><strong>Contact:</strong> <span contenteditable="true" class="placeholder-text">Mobile No.</span></p>
+        </div>
+
+        <!-- Items Table -->
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Rate (?)</th>
+                    <th>Total (?)</th>
+                    <th class="no-print">Action</th>
+                </tr>
+            </thead>
+            <tbody id="invoiceItems">
+                <!-- Items dynamically added here -->
+            </tbody>
+        </table>
+
+        <!-- Add Item Button -->
+        <button class="btn btn-add no-print" onclick="addNewRow()">+ Add Item</button>
+
+        <!-- Dynamic Calculation Section -->
+        <div class="calculation-box">
+            <div class="calc-row">
+                <span>Sub Total (???? ?????):</span>
+                <span>?<span id="subTotal">0.00</span></span>
+            </div>
+            <div class="calc-row gst-row">
+                <span>GST Tax (<span id="gstPercentage" contenteditable="true" oninput="calculateGrandTotal()">18</span>%):</span>
+                <span>?<span id="gstAmount">0.00</span></span>
+            </div>
+            <hr>
+            <div class="calc-row grand-total-row">
+                <h3>Grand Total (Net Amount):</h3>
+                <h3>?<span id="grandTotal">0.00</span></h3>
+            </div>
+        </div>
+
+        <!-- Print Action Button -->
+        <div class="print-actions no-print">
+            <button class="btn btn-print" onclick="window.print()">Print Invoice ???</button>
+        </div>
+    </div>
+<footer class="site-footer">
+    <p>© 2026 <strong>Opnora</strong>. All Rights Reserved.</p>
+
+    <div class="footer-links">
+        <a href="about.html">About</a> |
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms & Conditions</a> |
+        <a href="contact-us.html">Contact Us</a>
+    </div>
+
+    <p style="margin-top:10px;">
+        Powered by
+        <a href="https://opnora.com" target="_blank">Opnora.com</a>
+    </p>
+</footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
